@@ -21,5 +21,8 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Add src to PYTHONPATH
+        run: echo "$GITHUB_WORKSPACE/src" >> $GITHUB_PATH
+
       - name: Run tests
         run: pytest --tb=short -v
