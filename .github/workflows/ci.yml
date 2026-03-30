@@ -22,4 +22,6 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run tests
-        run: pytest --tb=short -v
+        run: |
+          cd tests
+          pytest --tb=short -v ../tests
