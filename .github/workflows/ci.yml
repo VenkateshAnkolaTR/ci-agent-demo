@@ -1,3 +1,4 @@
+# agent test commit
 name: CI Pipeline
 
 on:
@@ -18,13 +19,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: |
-          pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install pytest
-
-      - name: Set PYTHONPATH
-        run: echo "PYTHONPATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
+        run: pip install -r requirements.txt
 
       - name: Run tests
         run: pytest --tb=short -v
