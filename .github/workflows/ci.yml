@@ -10,10 +10,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v2
         with:
           python-version: '3.1111'
 
@@ -21,7 +21,9 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Set PYTHONPATH
-        run: echo "PYTHONPATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
+        run: echo "::set-env name=PYTHONPATH::$GITHUB_WORKSPACE"
 
       - name: Run tests
-        run: pytest --tb=short -v
+        run: |
+          echo "::set-output name=status::running"
+          pytest --tb=short -v
