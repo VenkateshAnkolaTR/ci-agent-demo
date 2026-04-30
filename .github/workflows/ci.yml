@@ -1,24 +1,29 @@
 name: CI Pipeline
-
+ 
 on:
   pull_request:
     branches: [main]
-
+ 
 jobs:
   test:
     runs-on: ubuntu-latest
-
+ 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
-
+        uses: actions/checkout@v4
+ 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
+ 
       - name: Install dependencies
         run: pip install -r requirements.txt
-
+ 
+      - name: Set PYTHONPATH
+        run: echo "PYTHONPATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
+ 
       - name: Run tests
-        run: pytest --tb=short -v
+        run: |
+          echo "status=running" >> $GITHUB_OUTPUT
+          pytest --tb=short -v
