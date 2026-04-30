@@ -21,9 +21,9 @@ jobs:
         run: pip install -r requirements.txt
  
       - name: Set PYTHONPATH
-        run: echo "::set-env name=PYTHONPATH::$GITHUB_WORKSPACE"
+        run: echo "PYTHONPATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
  
       - name: Run tests
         run: |
-          echo "::set-output name=status::running"
+          echo "status=running" >> $GITHUB_OUTPUT
           pytest --tb=short -v
