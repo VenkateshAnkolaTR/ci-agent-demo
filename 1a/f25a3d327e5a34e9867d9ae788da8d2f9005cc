@@ -1,0 +1,21 @@
+tests/test_math_edge_cases.py
+  s_022fb951f09343::t_bac7e431f6c5e4 53-78
+tests/test_user_integration.py
+  s_022fb951f09343::t_2e840698a70ec1 54-72
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "1af25a3d327e5a34e9867d9ae788da8d2f9005cc",
+  "prompts": {},
+  "sessions": {
+    "s_022fb951f09343": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "82aafd33-80bf-4d8c-b3f8-ad2a8d29b365",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Venkatesh <Venkatesh.Ankola@thomsonreuters.com>"
+    }
+  }
+}
