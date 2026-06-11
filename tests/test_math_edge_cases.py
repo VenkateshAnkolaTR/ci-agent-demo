@@ -50,3 +50,29 @@ def test_multiply_large_numbers():
 def test_multiply_small_floats():
     result = multiply(0.1, 0.2)
     assert abs(result - 0.02) < 1e-9
+
+
+# --- Algebraic property tests ---
+
+def test_addition_is_commutative():
+    assert add(12345, -6789) == add(-6789, 12345)
+
+
+def test_subtract_is_inverse_of_add():
+    a, b = 99, 33
+    assert subtract(add(a, b), b) == a
+
+
+def test_multiply_is_commutative():
+    assert multiply(-17, 23) == multiply(23, -17)
+
+
+# --- Special numeric values ---
+
+def test_add_with_infinity():
+    assert add(float("inf"), 10) == float("inf")
+
+
+def test_multiply_with_infinity_and_zero_is_nan():
+    result = multiply(float("inf"), 0)
+    assert result != result

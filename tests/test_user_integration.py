@@ -51,3 +51,22 @@ def test_get_user_with_none_id():
 
 def test_get_user_with_float_id():
     assert get_user(1.5) is None
+
+
+def test_get_user_with_boolean_true_matches_first_user():
+    user = get_user(True)
+    assert user is not None
+    assert user["name"] == "Venkatesh"
+
+
+def test_get_user_with_boolean_false_returns_none():
+    assert get_user(False) is None
+
+
+def test_is_admin_is_case_sensitive():
+    assert is_admin({"name": "Case", "role": "Admin"}) is False
+
+
+def test_is_admin_with_extra_fields_still_true_for_admin_role():
+    user = {"name": "Root", "role": "admin", "team": "platform", "active": True}
+    assert is_admin(user) is True
