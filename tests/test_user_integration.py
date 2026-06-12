@@ -70,3 +70,55 @@ def test_is_admin_is_case_sensitive():
 def test_is_admin_with_extra_fields_still_true_for_admin_role():
     user = {"name": "Root", "role": "admin", "team": "platform", "active": True}
     assert is_admin(user) is True
+
+
+# --- is_admin with non-dict inputs ---
+
+def test_is_admin_with_list_returns_false():
+    assert is_admin(["admin"]) is False
+
+
+def test_is_admin_with_string_returns_false():
+    assert is_admin("admin") is False
+
+
+def test_is_admin_with_integer_returns_false():
+    assert is_admin(42) is False
+
+
+# --- get_user with unusual input types ---
+
+def test_get_user_with_list_returns_none():
+    assert get_user([1]) is None
+
+
+def test_get_user_with_dict_returns_none():
+    assert get_user({1: "user"}) is None
+
+
+def test_get_user_with_very_large_id():
+    assert get_user(10**18) is None
+
+
+def test_get_user_with_negative_float_id():
+    assert get_user(-1.5) is None
+
+
+# --- User data completeness ---
+
+def test_user_ids_are_unique():
+    user1 = get_user(1)
+    user2 = get_user(2)
+    assert user1["name"] != user2["name"]
+
+
+def test_user_roles_are_non_empty():
+    for user_id in [1, 2]:
+        user = get_user(user_id)
+        assert user["role"] != ""
+
+
+def test_known_users_are_not_admin():
+    for user_id in [1, 2]:
+        user = get_user(user_id)
+        assert is_admin(user) is False

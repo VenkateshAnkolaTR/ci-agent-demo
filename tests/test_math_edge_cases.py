@@ -76,3 +76,67 @@ def test_add_with_infinity():
 def test_multiply_with_infinity_and_zero_is_nan():
     result = multiply(float("inf"), 0)
     assert result != result
+
+
+# --- NaN propagation ---
+
+def test_add_with_nan_propagates():
+    import math
+    assert math.isnan(add(float("nan"), 5))
+
+
+def test_subtract_with_nan_propagates():
+    import math
+    assert math.isnan(subtract(float("nan"), 3))
+
+
+def test_multiply_with_nan_propagates():
+    import math
+    assert math.isnan(multiply(float("nan"), 10))
+
+
+# --- Infinity edge cases ---
+
+def test_subtract_infinity_from_infinity_is_nan():
+    import math
+    assert math.isnan(subtract(float("inf"), float("inf")))
+
+
+def test_multiply_with_negative_infinity():
+    assert multiply(float("inf"), -1) == float("-inf")
+
+
+def test_add_negative_infinity():
+    assert add(float("-inf"), 100) == float("-inf")
+
+
+# --- Algebraic properties ---
+
+def test_addition_is_associative():
+    a, b, c = 3, 7, -2
+    assert add(add(a, b), c) == add(a, add(b, c))
+
+
+def test_multiplication_is_associative():
+    a, b, c = 2, -5, 4
+    assert multiply(multiply(a, b), c) == multiply(a, multiply(b, c))
+
+
+def test_distributivity():
+    a, b, c = 3, 4, 5
+    assert multiply(a, add(b, c)) == add(multiply(a, b), multiply(a, c))
+
+
+def test_add_identity_element():
+    assert add(42, 0) == 42
+    assert add(0, -7) == -7
+
+
+def test_multiply_identity_element():
+    assert multiply(99, 1) == 99
+    assert multiply(1, -13) == -13
+
+
+def test_subtract_self_is_zero():
+    for val in [0, 1, -100, 3.14, 10**15]:
+        assert subtract(val, val) == 0
