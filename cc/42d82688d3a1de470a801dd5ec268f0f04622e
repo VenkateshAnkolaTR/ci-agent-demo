@@ -1,0 +1,28 @@
+tests/test_user_integration.py
+  s_adeb81e1d9277a::t_6f649a7cd781c8 73-124
+tests/test_math_edge_cases.py
+  s_adeb81e1d9277a::t_0d3d352f95ac82 79-142
+.github/workflows/ci.yml
+  h_0cb0fbacb3a1cd 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "cc42d82688d3a1de470a801dd5ec268f0f04622e",
+  "prompts": {},
+  "humans": {
+    "h_0cb0fbacb3a1cd": {
+      "author": "Venkatesh <Venkatesh.Ankola@thomsonreuters.com>"
+    }
+  },
+  "sessions": {
+    "s_adeb81e1d9277a": {
+      "agent_id": {
+        "tool": "github-copilot-cli",
+        "id": "22eb2f0a-ffb6-4bf1-97ba-2fb0308d0a4d",
+        "model": "unknown"
+      },
+      "human_author": "Venkatesh <Venkatesh.Ankola@thomsonreuters.com>"
+    }
+  }
+}
