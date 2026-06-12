@@ -1,0 +1,14 @@
+.github/workflows/ci.yml
+  h_0cb0fbacb3a1cd 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "7a6ce788ca40b5cb22c7f353b22394502efa76a9",
+  "prompts": {},
+  "humans": {
+    "h_0cb0fbacb3a1cd": {
+      "author": "Venkatesh <Venkatesh.Ankola@thomsonreuters.com>"
+    }
+  }
+}
